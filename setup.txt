@@ -1,0 +1,35 @@
+I'm using a PI 3b running 32 bit Debian Bullseye, not updated. I'm not using the newer open source camera libraries as it's not quite mature enough for reliabilty or smoothness of operation. I'm using the older 'raspivid' library that is GPU based running the proprietary h264 encoding. 64 bit Debian doesn't seem to have or support the older library.
+
+To get started, run:
+
+> sudo apt-get update
+
+> sudo apt-get install vlc
+
+Then enable legacy camera using the command:
+
+> sudo raspi-config
+
+It will be under the 'interface' menu.
+
+Now modify /etc/rc.local and add to it:
+
+> su pi /home/pi/cameraStart.sh &
+
+It is important that it gets ran as user 'pi' in this case for security, and because VLC won't let you run as root.
+
+On reboot the two cameras should show up under:
+
+> rtsb://yourHostName:9090/
+
+and:
+
+> rtsb://yourHostName:9091/
+
+I'm using an AV to USB converter for my thermal camera. A MacroSilicon MS210x Video Grabber [EasierCAP] to be exact. If you want to use a different device for the second camera, modify what grep looks for at line #12 in file 'netCam.sh' and change it to something unique to that device when using the command:
+
+> v4l2-ctl -D -d /dev/video*
+
+where '*' is the number of the device. The reason I have the script look for the video device like this is on reboot the video devices get mixed up sometimes and it isn't reliable to just have the script use a staticly selected source.
+
+Enjoy your multi-camera IP camera streamer!
