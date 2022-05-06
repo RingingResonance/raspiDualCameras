@@ -2,7 +2,7 @@ raspivid -o - \
          -t 0 \
          -n \
          -hf -vf \
-         -g 15 \
+         -g 5 \
          -pf high \
          -md 2 \
          -w 1920 \
@@ -20,4 +20,10 @@ raspivid -o - \
     --no-audio \
     --demux=h264 \
     --h264-fps=15 \
-    --sout '#rtp{dst=0.0.0.0,port=1234,sdp=rtsp://:9090/}'
+    --rtsp-tcp \
+    --sout-x264-keyint 5 \
+    --sout-x264-non-deterministic 1 \
+    --sout-transcode-threads 4 \
+    --sout '#rtp{dst=0.0.0.0,port=1234,sdp=rtsp://:9090}'
+
+exit 0
