@@ -20,7 +20,6 @@ raspivid -o - \
     --no-audio \
     --demux=h264 \
     --h264-fps=15 \
-    --rtsp-tcp \
     --sout-x264-keyint 5 \
     --sout-x264-non-deterministic 1 \
     --sout-transcode-threads 4 \
