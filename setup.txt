@@ -36,4 +36,6 @@ for the second camera, modify what grep looks for at line #12 in file 'netCam.sh
 where '*' is the number of the device. The reason I have the script look for the video device like this is on reboot the video devices get mixed up sometimes 
 and it isn't reliable to just have the script use a staticly selected source.
 
+Make sure you aren't sending too many keyframes as this will hurt performance.
+
 Enjoy your multi-camera IP camera streamer!
