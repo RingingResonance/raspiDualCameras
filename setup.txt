@@ -22,11 +22,11 @@ It is important that it gets ran as user 'pi' in this case for security, and bec
 
 On reboot the two cameras should show up under:
 
-> rtsb://yourHostName:9090/
+> rtsp://yourHostName:9090/
 
 and:
 
-> rtsb://yourHostName:9091/
+> rtsp://yourHostName:9091/
 
 I'm using an AV to USB converter for my thermal camera. A MacroSilicon MS210x Video Grabber [EasierCAP] to be exact. If you want to use a different device 
 for the second camera, modify what grep looks for at line #12 in file 'netCam.sh' and change it to something unique to that device when using the command:
